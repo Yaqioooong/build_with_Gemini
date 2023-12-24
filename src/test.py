@@ -11,7 +11,7 @@ def requestGemini():
         'Content-Type': 'application/json',
     }
     params = {
-        'key': 'YOUR_GEMINI_API_KEY!',
+        'key': 'GEMINI API KEY',
     }
     json_data = {
         'contents': [
@@ -31,17 +31,15 @@ def requestGemini():
         json=json_data,
         proxies=proxies
     )
-    return response
+    jsonStr = response.text
+    jsonData = json.loads(jsonStr)
+    res = jsonData['candidates'][0]['content']['parts'][0]['text']
+    return res
 
 
 requestGemini()
 
 if __name__ == '__main__':
-    response = requestGemini()
-    response.encoding="utf-8"
-    jsonStr = response.text
-    print(jsonStr)
-    jsonData = json.loads(jsonStr)
-    res = jsonData['candidates'][0]['content']['parts'][0]['text']
+    res = requestGemini()
     print(res)
 
