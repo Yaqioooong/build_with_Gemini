@@ -9,7 +9,11 @@
   3. 配置本地代理。
   4. terminal:python bot.py即可
 - 直接使用：
-  1. 命令1：`/dailywords`,输出一个随机生成的词汇。
+  1. 命令1：`/daily_words`,输出一个随机生成的词汇。
   2. 命令2：`/start`，打招呼~
 ## About Issue
+## Todo
+- 定时消息订阅功能
+- 记录日志
+- 业务功能扩展
 
