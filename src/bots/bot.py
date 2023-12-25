@@ -4,10 +4,11 @@ from telegram.ext import CommandHandler,ApplicationBuilder,ContextTypes
 import requestAPIs
 import Logger
 import utils
+import Constants
 
 # 构建 bot
 TOKEN = os.environ['BOT_TOKEN']
-proxy_url = 'http://127.0.0.1:6969/'
+proxy_url = Constants.Constants.HTTP_PROXY
 
 application = ApplicationBuilder().token(TOKEN).proxy(proxy_url).get_updates_proxy(proxy_url).build()
 # 配置log格式及等级
