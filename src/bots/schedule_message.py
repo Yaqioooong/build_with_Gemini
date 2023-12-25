@@ -1,26 +1,25 @@
 import os
-
-from telegram import Update,Bot
-from telegram.ext import CommandHandler,ApplicationBuilder,ContextTypes
 import schedule
 import time
-import json
 import requestAPIs
-
-
 import requests
+import Logger
+import utils
 
 # 要发送消息的聊天 ID
 CHAT_ID = 5001341481
 
 # 初始化 Telegram Bot
 TOKEN = os.environ['BOT_TOKEN']
-
+# 配置log格式及等级
+logger = Logger.logger
 def schedule_send():
     print("test method")
     text = requestAPIs.requestGemini()
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={text}"
     requests.get(url).json()
+    uniText = utils.unifyText(text)
+    logger.warning('定时任务执行:chat_id:' + str(CHAT_ID) + 'message:' + str(uniText))
     print("send message success")
 
 # 定时发送消息的任务
