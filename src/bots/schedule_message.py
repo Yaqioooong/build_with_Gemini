@@ -5,6 +5,7 @@ import requestAPIs
 import requests
 import Logger
 import utils
+import Constants
 
 # 要发送消息的聊天 ID
 CHAT_ID = 5001341481
